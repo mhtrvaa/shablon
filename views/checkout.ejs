@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <%- include('partials/head', { title: "To'lov" }) %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="auth-wrap checkout-box">
+    <div class="card">
+      <h1>To'lov usulini tanlang</h1>
+      <p class="sub"><%= product.name %> — <strong><%= product.price.toLocaleString('uz-UZ') %> so'm</strong></p>
+
+      <form method="POST" action="/checkout/<%= product.id %>/start">
+        <label class="pay-option">
+          <input type="radio" name="provider" value="click" required style="margin-right:10px;">
+          <strong>Click</strong>
+          <span>Click ilovasi yoki kartasi orqali to'lash</span>
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="provider" value="payme" style="margin-right:10px;">
+          <strong>Payme</strong>
+          <span>Payme ilovasi yoki kartasi orqali to'lash</span>
+        </label>
+
+        <% if (testMode) { %>
+          <label class="pay-option test">
+            <input type="radio" name="provider" value="test" style="margin-right:10px;">
+            <strong>🧪 Test rejimi (sinov)</strong>
+            <span>Haqiqiy hisobsiz to'lov jarayonini sinab ko'rish uchun</span>
+          </label>
+        <% } %>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large" style="margin-top:10px;">Davom etish</button>
+      </form>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

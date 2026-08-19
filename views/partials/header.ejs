@@ -1,0 +1,23 @@
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo"><img src="/images/logo.png" alt="Assetly" class="logo-img"></a>
+    <nav class="nav-links">
+      <a href="/#categories">Kategoriyalar</a>
+      <a href="/#featured">Mashhur shablonlar</a>
+    </nav>
+    <div class="nav-actions">
+      <% if (user) { %>
+        <a href="/kabinet" class="btn btn-ghost">Kabinet</a>
+        <% if (user.role === 'admin') { %>
+          <a href="/admin/mahsulotlar" class="btn btn-ghost">Admin</a>
+        <% } %>
+        <form action="/chiqish" method="POST" style="display:inline;">
+          <button type="submit" class="btn btn-primary">Chiqish</button>
+        </form>
+      <% } else { %>
+        <a href="/kirish" class="btn btn-ghost">Kirish</a>
+        <a href="/royxatdan-otish" class="btn btn-primary">Ro'yxatdan o'tish</a>
+      <% } %>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <%- include('partials/head', { title: product.name }) %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section>
+    <div class="wrap">
+      <div class="product-detail">
+        <div class="product-thumb-large thumb-<%= product.category_slug %> marks">
+          <% if (product.preview_image) { %><img src="<%= product.preview_image %>" alt="<%= product.name %>"><% } %>
+        </div>
+        <div>
+          <div class="eyebrow"><a href="/kategoriya/<%= product.category_slug %>"><%= product.category_name %></a></div>
+          <h1><%= product.name %></h1>
+          <div class="product-price-big"><%= product.price.toLocaleString('uz-UZ') %> so'm</div>
+          <p class="product-desc"><%= product.description %></p>
+
+          <div style="display:flex; gap:10px; margin-bottom:26px;">
+            <% if (alreadyOwned) { %>
+              <a href="/yuklab-olish/<%= product.id %>" class="btn btn-primary btn-large">Yuklab olish</a>
+            <% } else { %>
+              <a href="/checkout/<%= product.id %>" class="btn btn-primary btn-large">Sotib olish</a>
+            <% } %>
+          </div>
+
+          <div style="border-top:1px solid var(--line); padding-top:20px; display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:13.5px; color:var(--ink-soft); display:flex; align-items:center; gap:8px;">
+              <span style="color:var(--violet); font-weight:700;">✓</span> Xarid qilgach, kabinetdan istalgan vaqt qayta yuklab olasiz
+            </div>
+            <div style="font-size:13.5px; color:var(--ink-soft); display:flex; align-items:center; gap:8px;">
+              <span style="color:var(--violet); font-weight:700;">✓</span> Click va Payme orqali xavfsiz to'lov
+            </div>
+            <div style="font-size:13.5px; color:var(--ink-soft); display:flex; align-items:center; gap:8px;">
+              <span style="color:var(--violet); font-weight:700;">✓</span> To'liq tahrirlanadigan fayl formati
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

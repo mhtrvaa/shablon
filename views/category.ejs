@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <%- include('partials/head', { title: category.name }) %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <%
+    const catDescriptions = {
+      'canva': "Ijtimoiy tarmoq va reklama uchun tayyor Canva dizayn maketlari.",
+      'prezentatsiya': "Biznes taqdimotlari uchun professional slayd to'plamlari.",
+      'cv-resume': "Ish beruvchini ishontiradigan rezyume andozalari.",
+      'instagram': "Feed va storiy uchun tayyor vizual maketlar.",
+      'ai-prompt': "Turli vazifalar uchun sinovdan o'tgan AI promptlar to'plami.",
+      'oquv': "Qo'llanma va darslik shaklidagi tayyor kontent.",
+      'vebsite': "Tez ishga tushiriladigan tayyor sayt shablonlari.",
+    };
+    const catDesc = catDescriptions[category.slug] || '';
+  %>
+
+  <section style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="eyebrow"><a href="/">Bosh sahifa</a> / Kategoriya</div>
+      <h1 style="font-family:var(--font-display); font-size:32px; font-weight:560; margin:10px 0 8px;"><%= category.name %></h1>
+      <% if (catDesc) { %>
+        <p style="color:var(--ink-soft); font-size:15px; max-width:520px; margin-bottom:30px;"><%= catDesc %></p>
+      <% } %>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <% if (products.length === 0) { %>
+        <div class="empty-state">Hozircha bu kategoriyada mahsulot yo'q.</div>
+      <% } else { %>
+        <div class="prod-grid">
+          <% products.forEach(function(p) { %>
+            <a href="/mahsulot/<%= p.id %>" class="prod-card">
+              <div class="prod-thumb thumb-<%= category.slug %> marks">
+                <% if (p.preview_image) { %><img src="<%= p.preview_image %>" alt="<%= p.name %>" loading="lazy"><% } %>
+              </div>
+              <div class="prod-body">
+                <div class="prod-cat"><%= category.name %></div>
+                <div class="prod-title"><%= p.name %></div>
+                <div class="prod-row">
+                  <span class="prod-price"><%= p.price.toLocaleString('uz-UZ') %> so'm</span>
+                  <span class="prod-buy">Ko'rish</span>
+                </div>
+              </div>
+            </a>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

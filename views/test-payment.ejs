@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <%- include('partials/head', { title: 'Test to\'lov' }) %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="auth-wrap checkout-box">
+    <div class="card">
+      <h1>🧪 Test to'lov rejimi</h1>
+      <p class="sub">
+        Bu — haqiqiy Click/Payme hisobisiz butun xarid jarayonini sinab ko'rish uchun.
+        Haqiqiy loyihada bu tugma ko'rinmaydi (TEST_MODE=false qilinganda).
+      </p>
+
+      <div class="order-row" style="margin-bottom:20px;">
+        <div>
+          <div class="name"><%= order.product_name %></div>
+          <div class="meta">Buyurtma #<%= order.id %> — <%= order.amount.toLocaleString('uz-UZ') %> so'm</div>
+        </div>
+      </div>
+
+      <form method="POST" action="/checkout/order/<%= order.id %>/test-tasdiqlash">
+        <button type="submit" class="btn btn-primary btn-block btn-large">To'lovni tasdiqlash (simulyatsiya)</button>
+      </form>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

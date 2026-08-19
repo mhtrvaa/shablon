@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <%- include('partials/head', { title: 'Kirish' }) %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="auth-wrap">
+    <div class="card">
+      <h1>Kirish</h1>
+      <p class="sub">Hisobingizga kiring.</p>
+
+      <% if (error) { %>
+        <div class="form-error"><%= error %></div>
+      <% } %>
+
+      <form method="POST" action="/kirish">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" value="<%= email %>" required>
+        </div>
+        <div class="field">
+          <label for="password">Parol</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Kirish</button>
+      </form>
+
+      <div class="form-foot">Hisobingiz yo'qmi? <a href="/royxatdan-otish">Ro'yxatdan o'tish</a></div>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

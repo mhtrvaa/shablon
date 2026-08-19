@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <%- include('partials/head', { title: 'Mening kabinetim' }) %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Kabinet</div>
+        <h2>Mening xaridlarim</h2>
+      </div>
+
+      <% if (success) { %>
+        <div class="form-success">To'lov muvaffaqiyatli qabul qilindi — mahsulotni pastdan yuklab olishingiz mumkin.</div>
+      <% } %>
+
+      <% if (orders.length === 0) { %>
+        <div class="empty-state">Hozircha xaridlaringiz yo'q. <a href="/#categories" style="color:var(--violet); font-weight:600;">Katalogni ko'ring →</a></div>
+      <% } else { %>
+        <div class="order-list">
+          <% orders.forEach(function(o) { %>
+            <div class="order-row">
+              <div>
+                <div class="name"><%= o.product_name %></div>
+                <div class="meta"><%= o.product_price.toLocaleString('uz-UZ') %> so'm — <%= o.paid_at %></div>
+              </div>
+              <a href="/yuklab-olish/<%= o.product_id %>" class="btn btn-primary">Yuklab olish</a>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

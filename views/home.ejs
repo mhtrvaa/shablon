@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <%- include('partials/head', { title: 'Bosh sahifa' }) %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow">7 turkum · tayyor raqamli shablonlar</div>
+        <h1>Nol'dan boshlamang, shablondan boshlang.</h1>
+        <p class="lede">CV, taqdimot, Canva dizayni, Instagram post, AI prompt, o'quv materiali va sayt shabloni — hammasi bir joyda, sotib oling va bugunoq ishlating.</p>
+        <a href="#categories" class="btn btn-primary btn-large">Shablonlarni ko'rish</a>
+        <div class="hero-facts">
+          <span><b>7</b> mahsulot turkumi</span>
+          <span><b>Click · Payme</b> orqali to'lov</span>
+          <span><b>24/7</b> kabinetdan yuklab olish</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="art-card marks c1">
+          <div class="swatch thumb-cv-resume"></div>
+          <div class="cap"><span>CV_shablon</span><span>.docx</span></div>
+        </div>
+        <div class="art-card marks c2">
+          <div class="swatch thumb-prezentatsiya"></div>
+          <div class="cap"><span>taqdimot</span><span>.pptx</span></div>
+        </div>
+        <div class="art-card marks c3">
+          <div class="swatch thumb-instagram"></div>
+          <div class="cap"><span>ig_post_kit</span><span>.png</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <% for(let i=0;i<2;i++){ %>
+      <span>CANVA</span><span class="dot">•</span>
+      <span>PREZENTATSIYA</span><span class="dot">•</span>
+      <span>CV/RESUME</span><span class="dot">•</span>
+      <span>INSTAGRAM</span><span class="dot">•</span>
+      <span>AI PROMPT</span><span class="dot">•</span>
+      <span>O'QUV MATERIALI</span><span class="dot">•</span>
+      <span>VEBSITE</span><span class="dot">•</span>
+      <% } %>
+    </div>
+  </div>
+
+  <section id="categories">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Katalog</div>
+        <h2>7 turdagi shablon, bitta manzilda</h2>
+      </div>
+      <div class="cat-grid">
+        <% categories.forEach(function(cat, i) { %>
+          <a href="/kategoriya/<%= cat.slug %>" class="cat-card marks">
+            <span class="cat-num"><%= String(i+1).padStart(2,'0') %></span>
+            <h3><%= cat.name %></h3>
+            <p>Ko'rish →</p>
+          </a>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section id="featured" style="background:var(--paper-alt);">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Katalogdan</div>
+        <h2>Mashhur shablonlar</h2>
+      </div>
+      <div class="prod-grid">
+        <% featured.forEach(function(p) { %>
+          <a href="/mahsulot/<%= p.id %>" class="prod-card">
+            <div class="prod-thumb thumb-<%= p.category_slug %> marks">
+              <% if (p.preview_image) { %><img src="<%= p.preview_image %>" alt="<%= p.name %>" loading="lazy"><% } %>
+            </div>
+            <div class="prod-body">
+              <div class="prod-cat"><%= p.category_name %></div>
+              <div class="prod-title"><%= p.name %></div>
+              <div class="prod-row">
+                <span class="prod-price"><%= p.price.toLocaleString('uz-UZ') %> so'm</span>
+                <span class="prod-buy">Ko'rish</span>
+              </div>
+            </div>
+          </a>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Jarayon</div>
+        <h2>Bor-yo'g'i 3 qadam</h2>
+      </div>
+      <div class="how-list">
+        <div class="how-item">
+          <div class="how-step">01 / Tanlang</div>
+          <h4>Kategoriyadan shablon toping</h4>
+          <p>7 turkum ichidan kerakli shablonni ko'rib chiqing va tanlang.</p>
+        </div>
+        <div class="how-item">
+          <div class="how-step">02 / To'lang</div>
+          <h4>Click yoki Payme orqali to'lang</h4>
+          <p>Xavfsiz to'lov tizimlari orqali bir necha soniyada rasmiylashtiring.</p>
+        </div>
+        <div class="how-item">
+          <div class="how-step">03 / Yuklab oling</div>
+          <h4>Kabinetdan darhol foydalaning</h4>
+          <p>Fayl "Mening xaridlarim" bo'limida istalgan vaqt sizni kutadi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Nega Assetly?</div>
+        <h2>Mijoz puliga achinmasin degan tamoyil bilan</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="ic">01</div>
+          <h4>To'liq tahrirlanadigan</h4>
+          <p>Har bir shablon o'zingizga moslab tahrirlashingiz uchun ochiq formatda keladi.</p>
+        </div>
+        <div class="why-card">
+          <div class="ic">02</div>
+          <h4>Sinovdan o'tgan sifat</h4>
+          <p>Har bir shablon nashr etilishidan oldin ko'rib chiqiladi va tozalanadi.</p>
+        </div>
+        <div class="why-card">
+          <div class="ic">03</div>
+          <h4>Doimiy kirish huquqi</h4>
+          <p>Sotib olgan shablonlaringizga istalgan vaqt kabinetdan qayta kirasiz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" style="padding:0;">
+    <div class="wrap trust-inner" style="padding:0 32px;">
+      <div class="trust-row"><b>7</b>mahsulot turkumi bitta katalogda</div>
+      <div class="trust-row"><b>Click / Payme</b>mahalliy to'lov tizimlari</div>
+      <div class="trust-row"><b>Shaxsiy kabinet</b>xaridlar tarixi va qayta yuklab olish</div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

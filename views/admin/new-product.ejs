@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <%- include('../partials/head', { title: 'Admin — Yangi mahsulot' }) %>
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <div class="auth-wrap" style="max-width:520px;">
+    <div class="card">
+      <h1>Yangi mahsulot qo'shish</h1>
+
+      <% if (error) { %>
+        <div class="form-error"><%= error %></div>
+      <% } %>
+
+      <form method="POST" action="/admin/mahsulotlar/yangi" enctype="multipart/form-data">
+        <div class="field">
+          <label for="category_id">Kategoriya</label>
+          <select id="category_id" name="category_id" required>
+            <% categories.forEach(function(c) { %>
+              <option value="<%= c.id %>"><%= c.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="field">
+          <label for="name">Mahsulot nomi</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="description">Tavsif</label>
+          <textarea id="description" name="description"></textarea>
+        </div>
+        <div class="field">
+          <label for="price">Narxi (so'm)</label>
+          <input type="number" id="price" name="price" min="0" step="1000" required>
+        </div>
+        <div class="field">
+          <label for="file">Sotiladigan fayl</label>
+          <input type="file" id="file" name="file" required>
+        </div>
+        <div class="field">
+          <label for="preview">Namuna rasm (mijozga ko'rinadi, ixtiyoriy)</label>
+          <input type="file" id="preview" name="preview" accept="image/*">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Qo'shish</button>
+      </form>
+    </div>
+  </div>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>
