@@ -1,5 +1,13 @@
 # Shablon — Raqamli shablonlar bozori
 
+
+# Shablon — Raqamli shablonlar bozori
+
+**Jonli demo:** [https://shablon-production.up.railway.app](https://shablon-production.up.railway.app)
+
+To'liq ishlaydigan sayt: mijoz ro'yxatdan o'tadi, mahsulot tanlaydi, to'laydi va
+shaxsiy kabinetidan yuklab oladi. Admin panel orqali yangi mahsulot qo'shish mumkin.
+
 To'liq ishlaydigan sayt: mijoz ro'yxatdan o'tadi, mahsulot tanlaydi, to'laydi va
 shaxsiy kabinetidan yuklab oladi. Admin panel orqali yangi mahsulot qo'shish mumkin.
 
